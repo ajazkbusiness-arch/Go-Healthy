@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Go Healthy Admin Dashboard</title>
+
+<link rel="stylesheet" href="./assets/css/style.css">
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+<style>
+
+/* ===== ADMIN ONLY STYLES ===== */
+.admin-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logout-btn{
+  background:#d32f2f;
+  color:white;
+  border:none;
+  padding:8px 14px;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+.dashboard-title{
+  margin-bottom:25px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= ADMIN AUTH CHECK ================= -->
+<script>
+const ADMIN_PASSWORD = "Go Healthy123";
+
+/* Check session login */
+if(localStorage.getItem("adminLoggedIn") !== "true"){
+
+  let entered = prompt("Enter Admin Password");
+
+  if(entered === ADMIN_PASSWORD){
+      localStorage.setItem("adminLoggedIn","true");
+  }else{
+      alert("Access Denied");
+      window.location.href="index.html";
+  }
+}
+</script>
+
+<!-- ================= NAVBAR ================= -->
+<header class="navbar">
+  <div class="container nav-flex admin-header">
+
+    <div class="logo"><img src="logo.png" alt="logo">Go HealthyAdmin</div>
+
+    <div>
+      <a href="index.html">Website</a>
+      <button class="logout-btn" onclick="logoutAdmin()">Logout</button>
+    </div>
+
+  </div>
+</header>
+
+<!-- ================= DASHBOARD ================= -->
+<section class="section">
+  <div class="container">
+
+    <h1 class="dashboard-title">📦 Orders Dashboard</h1>
+
+    <div id="ordersContainer"></div>
+
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container">
+    <p>Go Healthy Admin Panel</p>
+  </div>
+</footer>
+
+<script src="./assets/js/main.js"></script>
+
+<script>
+/* ===== LOGOUT SYSTEM ===== */
+function logoutAdmin(){
+  localStorage.removeItem("adminLoggedIn");
+  window.location.href="index.html";
+}
+</script>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+AOS.init({
+  duration: 900,
+  once: true,
+  easing: "ease-out-cubic"
+});
+</script>
+</body>
+</html>

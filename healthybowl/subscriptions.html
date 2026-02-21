@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Go Healthy | Subscriptions</title>
+
+<!-- GLOBAL CSS -->
+<link rel="stylesheet" href="./assets/css/style.css">
+
+<!-- Razorpay -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+<style>
+
+/* Highlight popular plan */
+.popular{
+  border:2px solid #2e7d32;
+  position:relative;
+}
+
+.badge{
+  position:absolute;
+  top:-12px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#2e7d32;
+  color:white;
+  padding:5px 12px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:bold;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:35px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<header class="navbar">
+  <div class="container nav-flex">
+
+    <div class="logo">
+      <img src="./logo.png" alt="Go Healthy Logo">
+      Go Healthy
+    </div>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="subscriptions.html">Subscriptions</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="track.html">Track Order</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+
+  </div>
+</header>
+
+<!-- ================= PLANS ================= -->
+<section class="section">
+  <div class="container">
+
+    <h1 class="section-title">Choose Your Healthy Plan</h1>
+
+    <div class="grid">
+
+      <!-- PLAN 1 -->
+      <div class="card">
+        <h3>250g Weekly Bowl</h3>
+        <p class="price">₹1500 / Week</p>
+
+        <p>
+          Fresh fruits & organic sprouts.<br>
+          Perfect portion size for daily nutrition.
+        </p>
+
+        <ul style="text-align:left;margin:15px 0;">
+          <li>✔ Fresh daily preparation</li>
+          <li>✔ Free doorstep delivery</li>
+          <li>✔ Flexible subscription</li>
+        </ul>
+
+        <button class="btn"
+        onclick="addToCart('250g Weekly Bowl',1500)">
+        Add to Cart
+        </button>
+      </div>
+
+      <!-- PLAN 2 -->
+      <div class="card popular">
+
+        <div class="badge">MOST POPULAR</div>
+
+        <h3>500g Weekly Bowl</h3>
+        <p class="price">₹2900 / Week</p>
+
+        <p>
+          Larger portions for families & fitness lovers.
+          Maximum freshness guaranteed.
+        </p>
+
+        <ul style="text-align:left;margin:15px 0;">
+          <li>✔ Premium fruit selection</li>
+          <li>✔ Free delivery included</li>
+          <li>✔ Best value plan</li>
+        </ul>
+
+        <button class="btn"
+        onclick="addToCart('500g Weekly Bowl',2900)">
+        Add to Cart
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= CART ================= -->
+<div class="cart-box">
+  <h3>🛒 Cart</h3>
+
+  <div id="cartItems">Cart empty</div>
+
+  <p><strong>Total ₹<span id="total">0</span></strong></p>
+
+  <button class="btn" onclick="checkout()">
+    Checkout
+  </button>
+</div>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container">
+    <h3>Go Healthy</h3>
+    <p>Fresh & Organic Fruits and Sprouts Delivered Daily</p>
+    <p>📍 Chandan Nagar, Pune 411001</p>
+    <p>📞 +91 7448020257 | 📧 simrandhamdhere2002@gmail.com</p>
+    <p>© 2026 Go Healthy Foods Private Limited</p>
+  </div>
+</footer>
+
+<!-- ✅ IMPORTANT: MODULE SCRIPT -->
+<script type="module" src="./assets/js/main.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+AOS.init({
+  duration: 900,
+  once: true,
+  easing: "ease-out-cubic"
+});
+</script>
+</body>
+</html>

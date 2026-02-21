@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Dashboard | Go Healthy</title>
+
+<link rel="stylesheet" href="./assets/css/style.css">
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+</head>
+
+<body>
+
+<header class="navbar">
+<div class="container nav-flex">
+<div class="logo"><img src="logo.png" alt="logo"> Go Healthy</div>
+
+<nav>
+<a href="subscriptions.html">Order Plans</a>
+<button class="btn" onclick="logout()">Logout</button>
+</nav>
+</div>
+</header>
+
+<section class="section">
+<div class="container">
+
+<h1>My Orders</h1>
+
+<div id="ordersList"></div>
+
+</div>
+</section>
+
+<script type="module">
+
+import {
+auth,
+db,
+onAuthStateChanged,
+signOut,
+collection,
+getDocs,
+query,
+where
+} from "./assets/js/firebase.js";
+
+window.logout = () => signOut(auth);
+
+/* ===== Protect Page ===== */
+onAuthStateChanged(auth, async (user)=>{
+
+ if(!user){
+   window.location="login.html";
+   return;
+ }
+
+ loadOrders(user.uid);
+});
+
+/* ===== Load Customer Orders ===== */
+import { onSnapshot } from "./assets/js/firebase.js";
+
+function loadOrders(uid){
+
+ const q = query(
+   collection(db,"orders"),
+   where("userId","==",uid)
+ );
+
+ onSnapshot(q,(snapshot)=>{
+
+   const ordersDiv =
+   document.getElementById("ordersList");
+
+   ordersDiv.innerHTML="";
+
+   snapshot.forEach(doc=>{
+
+     const order = doc.data();
+
+     ordersDiv.innerHTML += `
+       <div class="card">
+         <h3>${order.orderId}</h3>
+         <p>Status: ${order.status}</p>
+         <p>Total: ₹${order.amount}</p>
+         <p>${order.date}</p>
+
+         <div class="progress">
+           ${getProgress(order.status)}
+         </div>
+       </div>`;
+   });
+
+ });
+}
+
+function getProgress(status){
+
+const steps = [
+ "Confirmed",
+ "Preparing",
+ "Out for Delivery",
+ "Delivered"
+];
+
+return steps.map(step=>{
+ const done =
+ steps.indexOf(step)
+ <= steps.indexOf(status);
+
+ return `
+ <div style="
+   padding:6px;
+   margin:4px 0;
+   background:${done ? '#2e7d32' : '#ddd'};
+   color:white;
+   border-radius:6px;">
+   ${step}
+ </div>`;
+}).join("");
+
+}
+
+</script>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+AOS.init({
+  duration: 900,
+  once: true,
+  easing: "ease-out-cubic"
+});
+</script>
+</body>
+</html>

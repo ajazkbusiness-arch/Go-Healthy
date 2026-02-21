@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delivery Panel | Go Healthy</title>
+
+<link rel="stylesheet" href="./assets/css/style.css">
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+</head>
+
+<body>
+
+<header class="navbar">
+<div class="container nav-flex">
+<div class="logo">🚚 Delivery Panel</div>
+
+<button class="btn" onclick="logout()">Logout</button>
+</div>
+</header>
+
+<section class="section">
+<div class="container">
+
+<h1>Active Deliveries</h1>
+
+<div id="deliveryOrders"></div>
+
+</div>
+</section>
+
+<script type="module">
+
+import {
+auth,
+db,
+onAuthStateChanged,
+signOut,
+collection,
+onSnapshot,
+updateDoc,
+doc
+} from "./assets/js/firebase.js";
+
+window.logout = () => signOut(auth);
+
+/* Protect page */
+onAuthStateChanged(auth,(user)=>{
+ if(!user) window.location="login.html";
+});
+
+/* REALTIME ORDER LISTENER */
+onSnapshot(collection(db,"orders"),(snapshot)=>{
+
+ const container =
+ document.getElementById("deliveryOrders");
+
+ container.innerHTML="";
+
+ snapshot.forEach(orderDoc=>{
+
+   const order = orderDoc.data();
+
+   container.innerHTML += `
+     <div class="card">
+       <h3>${order.orderId}</h3>
+       <p>Status: ${order.status}</p>
+       <p>Total: ₹${order.amount}</p>
+
+       <button onclick="updateStatus('${orderDoc.id}','Preparing')">
+         Preparing
+       </button>
+
+       <button onclick="updateStatus('${orderDoc.id}','Out for Delivery')">
+         Out for Delivery
+       </button>
+
+       <button onclick="updateStatus('${orderDoc.id}','Delivered')">
+         Delivered
+       </button>
+     </div>
+   `;
+ });
+
+});
+
+/* Update order status */
+window.updateStatus = async function(id,status){
+
+ await updateDoc(doc(db,"orders",id),{
+   status:status
+ });
+
+};
+
+</script>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+AOS.init({
+  duration: 900,
+  once: true,
+  easing: "ease-out-cubic"
+});
+</script>
+</body>
+</html>

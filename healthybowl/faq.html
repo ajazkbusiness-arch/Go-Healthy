@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Go Healthy FAQ</title>
+
+<!-- GLOBAL CSS -->
+<link rel="stylesheet" href="./assets/css/style.css">
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+<style>
+/* FAQ accordion styling */
+.faq-item{
+  margin-bottom:15px;
+}
+
+.faq-question{
+  cursor:pointer;
+  background:#ffffff;
+  padding:15px;
+  border-radius:10px;
+  box-shadow:0 3px 10px rgba(0,0,0,.08);
+  font-weight:bold;
+}
+
+.faq-answer{
+  display:none;
+  padding:15px;
+  background:#f1f8f2;
+  border-radius:10px;
+  margin-top:8px;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<header class="navbar">
+  <div class="container nav-flex">
+
+    <div class="logo"><img src="logo.png" alt="logo"> Go Healthy</div>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="subscriptions.html">Subscriptions</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="track.html">Track Order</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+
+  </div>
+</header>
+
+<!-- ================= FAQ HERO ================= -->
+<section class="faq-hero">
+
+  <div class="faq-hero-bg"></div>
+
+  <div class="container" data-aos="fade-up">
+    <h1>Frequently Asked Questions</h1>
+    <p>
+      Everything you need to know about Go Healthy subscriptions,
+      delivery and freshness.
+    </p>
+  </div>
+
+</section>
+
+
+<!-- ================= FAQ SECTION ================= -->
+<section class="section">
+  <div class="container faq-wrapper">
+
+    <!-- ITEM -->
+    <div class="faq-item" data-aos="fade-up">
+      <button class="faq-question">
+        How does the subscription work?
+        <span>+</span>
+      </button>
+
+      <div class="faq-answer">
+        You receive fresh fruits and sprouts delivered weekly or monthly
+        depending on your selected plan.
+      </div>
+    </div>
+
+    <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+      <button class="faq-question">
+        Can I pause or modify my plan?
+        <span>+</span>
+      </button>
+
+      <div class="faq-answer">
+        Yes. You can pause, skip, or modify your subscription anytime.
+      </div>
+    </div>
+
+    <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+      <button class="faq-question">
+        How fresh are the ingredients?
+        <span>+</span>
+      </button>
+
+      <div class="faq-answer">
+        All fruits and sprouts are sourced daily from local farms
+        and prepared fresh before delivery.
+      </div>
+    </div>
+
+    <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+      <button class="faq-question">
+        What if I am not satisfied?
+        <span>+</span>
+      </button>
+
+      <div class="faq-answer">
+        Contact us within 24 hours and we will arrange a replacement
+        or solution immediately.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container">
+    <h3>Go Healthy</h3>
+    <p>Fresh & Organic Fruits and Sprouts Delivered Daily</p>
+    <p>📍 Chandan Nagar, Pune 411001</p> 
+    <p>📞 +91 7448020257 | 📧 simrandhamdhere2002@gmail.com</p> 
+    <p>© 2026 Go Healthy Foods Private Limited</p> 
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll(".faq-question").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+
+    const item = btn.parentElement;
+
+    document.querySelectorAll(".faq-item")
+      .forEach(i=>{
+        if(i !== item) i.classList.remove("active");
+      });
+
+    item.classList.toggle("active");
+  });
+});
+</script>
+</body>
+</html>

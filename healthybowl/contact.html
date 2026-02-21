@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Go Healthy</title>
+
+<!-- GLOBAL CSS -->
+<link rel="stylesheet" href="./assets/css/style.css">
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<header class="navbar">
+  <div class="container nav-flex">
+
+    <div class="logo"><img src="logo.png" alt="logo"> Go Healthy</div>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="subscriptions.html">Subscriptions</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="track.html">Track Order</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+
+  </div>
+</header>
+
+<!-- ================= CONTACT SECTION ================= -->
+<section class="section">
+  <div class="container">
+
+    <h1 style="text-align:center;margin-bottom:30px;">
+      Contact Us
+    </h1>
+
+    <div class="grid">
+
+      <!-- CONTACT DETAILS -->
+     <div class="card">
+  <h2>Get in Touch</h2>
+
+  <p>📞 +91 7448020257</p>
+  <p>📧 simrandhamdhere2002@gmail.com</p>
+  <p>📍 Chandan Nagar, Pune 411001</p>
+  <p>🕒 Mon–Sat: 8AM – 8PM</p>
+
+</div>
+
+      <!-- CONTACT FORM -->
+      <div class="card">
+        <h2>Send Us a Message</h2>
+
+        <form onsubmit="submitContact(event)">
+          <input type="text" placeholder="Your Name" required
+          style="width:100%;padding:12px;margin:8px 0;">
+
+          <input type="email" placeholder="Email Address" required
+          style="width:100%;padding:12px;margin:8px 0;">
+
+          <textarea placeholder="Your Message" required
+          style="width:100%;padding:12px;margin:8px 0;height:120px;"></textarea>
+
+          <button class="btn" type="submit">
+            Send Message
+          </button>
+        </form>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container">
+    <h3>Go Healthy</h3>
+    <p>Fresh & Organic Fruits and Sprouts Delivered Daily</p>
+    <p>📍 Chandan Nagar, Pune 411001</p> 
+    <p>📞 +91 7448020257 | 📧 simrandhamdhere2002@gmail.com</p> 
+    <p>© 2026 Go Healthy Foods Private Limited</p> 
+  </div>
+</footer>
+
+<!-- SIMPLE FORM SCRIPT -->
+<script>
+function submitContact(e){
+  e.preventDefault();
+  alert("✅ Thank you! Your message has been received.");
+}
+</script>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+AOS.init({
+  duration: 900,
+  once: true,
+  easing: "ease-out-cubic"
+});
+</script>
+</body>
+</html>

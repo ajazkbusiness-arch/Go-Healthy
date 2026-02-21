@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login - Go Healthy</title>
+<link rel="stylesheet" href="./assets/css/style.css">
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+</head>
+
+<body class="section">
+
+<div class="container card" style="max-width:400px;margin:auto;">
+<h2>Login</h2>
+
+<input id="email" placeholder="Email" class="track-input">
+<input id="password" type="password"
+placeholder="Password" class="track-input">
+
+<button class="btn" onclick="login()">Login</button>
+
+<p>No account?
+<a href="signup.html">Signup</a></p>
+</div>
+
+<script type="module">
+
+import {
+auth,
+signInWithEmailAndPassword
+} from "./assets/js/firebase.js";
+
+window.login = async function(){
+
+const email =
+document.getElementById("email").value;
+
+const password =
+document.getElementById("password").value;
+
+try{
+ await signInWithEmailAndPassword(auth,email,password);
+ window.location="dashboard.html";
+}catch(e){
+ alert(e.message);
+}
+}
+
+</script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+AOS.init({
+  duration: 900,
+  once: true,
+  easing: "ease-out-cubic"
+});
+</script>
+</body>
+</html>

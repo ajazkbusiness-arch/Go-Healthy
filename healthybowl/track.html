@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Track Order | Go Healthy</title>
+
+<link rel="stylesheet" href="./assets/css/style.css">
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+<style>
+
+/* Track input styling */
+.track-input{
+  width:100%;
+  padding:14px;
+  margin-bottom:15px;
+  border-radius:8px;
+  border:1px solid #ccc;
+  font-size:16px;
+}
+
+.track-box{
+  max-width:600px;
+  margin:auto;
+  text-align:center;
+}
+
+.helper-text{
+  font-size:14px;
+  color:#777;
+  margin-top:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<header class="navbar">
+  <div class="container nav-flex">
+
+    <div class="logo"><img src="logo.png" alt="logo"> Go Healthy</div>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="subscriptions.html">Subscriptions</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="track.html">Track Order</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+
+  </div>
+</header>
+
+<!-- ================= TRACK SECTION ================= -->
+<section class="section">
+  <div class="container">
+
+    <h1 style="text-align:center;margin-bottom:30px;">
+      Track Your Order
+    </h1>
+
+    <div class="track-box card">
+
+      <input
+        id="orderInput"
+        class="track-input"
+        type="text"
+        placeholder="Enter Order ID (Example: HB1708456234)"
+      >
+
+      <button class="btn" onclick="trackOrder()">
+        Track Order
+      </button>
+
+      <p class="helper-text">
+        You can find your Order ID in your payment confirmation or invoice.
+      </p>
+
+      <div id="orderResult" style="margin-top:25px;"></div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container">
+    <h3>Go Healthy</h3>
+    <p>Fresh & Organic Fruits and Sprouts Delivered Daily</p>
+    <p>📍 Chandan Nagar, Pune 411001</p> 
+    <p>📞 +91 7448020257 | 📧 simrandhamdhere2002@gmail.com</p> 
+    <p>© 2026 Go Healthy Foods Private Limited</p> 
+  </div>
+</footer>
+
+<script src="./assets/js/main.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+AOS.init({
+  duration: 900,
+  once: true,
+  easing: "ease-out-cubic"
+});
+</script>
+
+</body>
+</html>
